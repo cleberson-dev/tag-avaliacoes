@@ -1,0 +1,19 @@
+{
+  "name": "good_reads_api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "node-fetch": "^1.7.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.7"
+  }
+}

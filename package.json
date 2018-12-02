@@ -1,0 +1,18 @@
+{
+  "name": "tag-avaliacoes",
+  "version": "1.0.0",
+  "description": "Webapp que compara avaliações feitas na TAG com as feitas na GoodReads. Realizado como teste técnico para a vaga de front-end",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "teste",
+    "desafio",
+    "frontend",
+    "react",
+    "redux"
+  ],
+  "author": "Cleberson F. R. Junior",
+  "license": "MIT"
+}
