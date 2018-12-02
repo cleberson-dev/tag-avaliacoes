@@ -23,9 +23,9 @@ app.use('*', (req, res) => {
     .catch(error => res.status( 400 ).send('Erro na requisição.'));
 });
 
-const server = app.listen(3000, () => {
+const server = app.listen(5000, () => {
   const host = server.address().address;
   const port = server.address().port;
 
-  console.log("Server listening at http://localhost:3000/");
+  console.log("Server listening at http://localhost:5000/");
 });

@@ -4,6 +4,9 @@
   "description": "Webapp que compara avaliações feitas na TAG com as feitas na GoodReads. Realizado como teste técnico para a vaga de front-end",
   "main": "index.js",
   "scripts": {
+    "client": "cd client && npm start",
+    "server": "cd server && npm start",
+    "app": "concurrently \"npm run client\" \"npm run server\" ",
     "test": "jest"
   },
   "keywords": [
@@ -14,5 +17,8 @@
     "redux"
   ],
   "author": "Cleberson F. R. Junior",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^4.1.0"
+  }
 }
