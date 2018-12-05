@@ -47,8 +47,6 @@ export const BookAuthor = styled.span`
   font-size: 0.75rem;
 `;
 
-
-
 export const TextContainer = styled.div`
   flex-grow: 1;
 `;
@@ -57,21 +55,30 @@ export const TextContainer = styled.div`
 
 
 
-const BookDetails = ({ livro, botao, height }) => (
-  <BookContainer height={height}>
-    <BookCover src={coverUrl} />
-    <BookInfo>
-      <TextContainer>
-        <BookTitle>O Xará</BookTitle>
-        <BookAuthor>Jhumpa Lahiri</BookAuthor>
-      </TextContainer>
-      <RatingsContainer>
-        <Rating brand="tag" rating="4.55" />
-        <Rating brand="goodreads" rating="4.95" />
-      </RatingsContainer>
-      { botao }
-    </BookInfo>
-  </BookContainer>
-);
+const getTAGRating = (totalRatings, numRatings) => (totalRatings / numRatings).toFixed(2);
+
+
+
+const BookDetails = ({ livro, botao, height }) => {
+  const { cover, name, author, numRatings, totalRatings, grRating } = livro;
+  const tagRating = getTAGRating(totalRatings, numRatings);
+
+  return (
+    <BookContainer height={height}>
+      <BookCover src={cover.url} />
+      <BookInfo>
+        <TextContainer>
+          <BookTitle>{name}</BookTitle>
+          <BookAuthor>{author}</BookAuthor>
+        </TextContainer>
+        <RatingsContainer>
+          <Rating brand="tag" rating={tagRating} />
+          <Rating brand="goodreads" rating={grRating ? grRating : "-.--"} />
+        </RatingsContainer>
+        { botao }
+      </BookInfo>
+    </BookContainer>
+  );
+};
 
 export default BookDetails;

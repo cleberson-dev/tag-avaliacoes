@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 
-
 import Header from './components/Header';
 import BookList from './pages/BookList';
 import DetailsModal from './pages/DetailsModal';

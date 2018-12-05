@@ -1,0 +1,4 @@
+export const GET_BOOKS = 'GET_BOOKS';
+
+export const SHOW_CURRENT_BOOK = 'SHOW_CURRENT_BOOK';
+export const HIDE_CURRENT_BOOK = 'HIDE_CURRENT_BOOK';

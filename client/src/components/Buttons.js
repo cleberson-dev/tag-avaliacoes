@@ -14,7 +14,7 @@ export const FlatButton = styled.button`
 
   &:hover {
     color: ${props => props.theme.primary};
-    background-color: rgba(0,0,0,.04);
+    background-color: white;
     transition: 0.2s ease;
     outline: 1px solid ${props => props.theme.primary};
   }
