@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
+
+
+
+
 const Container = styled.div`
   text-align: right;
 
@@ -20,12 +24,16 @@ const RatingNumber = styled.p`
 `;
 
 
+
 const Rating = ({ brand, rating }) => (
   <Container>
     <BrandTitle brand={brand}>{brand === 'goodreads' ? 'GoodReads' : 'TAG' }</BrandTitle>
     <RatingNumber>{rating}</RatingNumber>
   </Container>
 );
+
+
+
 
 
 export default Rating;

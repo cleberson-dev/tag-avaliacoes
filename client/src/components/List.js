@@ -1,7 +1,10 @@
-import React from 'react';
 import styled from 'styled-components';
 
-export const Lista = styled.ul`
+
+
+
+
+export const List = styled.ul`
   position: relative;
   bottom: 15px;
   margin: auto;
@@ -9,7 +12,7 @@ export const Lista = styled.ul`
   width: 85%;
 `;
 
-export const ListaItem = styled.li`
+export const ListItem = styled.li`
   margin-bottom: 10px;
   width: 100%;
 `;

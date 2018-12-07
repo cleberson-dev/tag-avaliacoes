@@ -1,12 +1,16 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
+
+
+
 
 
 const RegularButton = ({ onClickHandler, label, className }) => (
   <button className={className} onClick={onClickHandler}>
-    { label }
+    {label}
   </button>
 );
+
 
 
 export const FlatButton = styled(RegularButton)`

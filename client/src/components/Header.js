@@ -3,6 +3,10 @@ import styled from 'styled-components';
 
 import tagLogo from '../assets/img/tag-logo.svg';
 
+
+
+
+
 const HeaderContainer = styled.header`
   background-color: ${props => props.theme.primary};
   color: white;
@@ -18,12 +22,17 @@ const Title = styled.h3`
   font-size: 1.1rem;
 `;
 
+
+
 const Header = () => (
   <HeaderContainer>
     <img src={tagLogo} alt="Tag Logo" />
     <Title>Avaliações</Title>
   </HeaderContainer>
 );
+
+
+
 
 
 export default Header;

@@ -8,40 +8,44 @@ import { getGrStats } from '../../actions/booksActions';
 import Card from '../../components/Card';
 import BookDetails from '../../components/BookDetails';
 import Loading from '../../components/Loading';
-import { ListaItem } from '../../components/Lista';
+import { ListItem } from '../../components/List';
 import { FlatButton } from '../../components/Buttons';
 
 
 
 
 
-const DetalhesButton = styled(FlatButton)`
+const DetailsButton = styled(FlatButton)`
   align-self: flex-end;
   margin-top: 10px;
 `;
 
 
+
 class BookItem extends Component {
   componentDidMount() {
-    const { livro, getGrStats } = this.props;
-    getGrStats(livro);
+    const { book, getGrStats } = this.props;
+
+    // Busca a avaliação da API da GoodReads
+    getGrStats(book);
   }
   
   render() {
-    const { livro, showCurrentBook } = this.props;
+    const { book, showCurrentBook } = this.props;
 
     return (
-      <ListaItem>
+      <ListItem>
         <Card>
-          { livro.hasOwnProperty('grStats') ? 
+          { /* Somente irá mostrar o card com o livro se tiver buscado as avaliações */
+            book.hasOwnProperty('grStats') ? 
             <BookDetails
-              livro={livro} 
-              botao={<DetalhesButton label="Ver Detalhes" onClickHandler={() => showCurrentBook(livro)} />} 
+              book={book} 
+              button={<DetailsButton label="Ver Detalhes" onClickHandler={() => showCurrentBook(book)} />} 
             /> :
             <Loading size={40} />
           }
         </Card>
-      </ListaItem>
+      </ListItem>
     );
   }
 }

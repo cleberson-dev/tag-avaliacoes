@@ -17,6 +17,7 @@ const animation = keyframes`
 `;
 
 
+
 const LoadingContainer = styled.div`
   height: 100%;
   width: 100%;
@@ -26,6 +27,7 @@ const LoadingContainer = styled.div`
   align-items: center;
   animation: ${animation} 0.5s;
 `;
+
 
 
 const Loading = ({ size }) => (
