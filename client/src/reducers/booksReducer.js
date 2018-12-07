@@ -6,7 +6,6 @@ const booksReducer = (state = [], action) => {
       return action.books;
     }
     case GET_GR_STATS: {
-      console.log(state);
       return state.map((livro) => { 
         if (livro.objectId === action.livroID) {
           return {

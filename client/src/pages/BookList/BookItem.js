@@ -24,7 +24,6 @@ const DetalhesButton = styled(FlatButton)`
 class BookItem extends Component {
   componentDidMount() {
     const { livro, getGrStats } = this.props;
-    console.log(livro.isbn);
     getGrStats(livro);
   }
   

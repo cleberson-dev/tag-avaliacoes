@@ -1,16 +1,33 @@
 import axios from 'axios';
+import { DateTime } from 'luxon';
 import { GET_BOOKS, GET_GR_STATS } from './types';
 import data from '../livros.json';
 
 
 
+
+
 const livrosJSON = data.results;
+const OPTIONS = { locale: "pt" };
+const FORMAT = "LLLL 'de' y";
+
+const livros = livrosJSON.sort((livroA, livroB) => {
+  const dataA = DateTime.fromFormat(livroA.edition, FORMAT, OPTIONS);
+  const dataB = DateTime.fromFormat(livroB.edition, FORMAT, OPTIONS);
+
+  const diff = dataB.diff(dataA).toObject();
+
+  return diff.milliseconds;
+});
+
+
+
 
 
 export const getBooks = () => dispatch => {
   dispatch({
     type: GET_BOOKS,
-    books: livrosJSON
+    books: livros
   });
 };
 
