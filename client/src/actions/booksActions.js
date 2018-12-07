@@ -1,30 +1,36 @@
-import { GET_BOOKS } from './types';
-
 import axios from 'axios';
-
+import { GET_BOOKS, GET_GR_STATS } from './types';
 import data from '../livros.json';
-const livros = data.results;
+
+
+
+const livrosJSON = data.results;
+
 
 export const getBooks = () => dispatch => {
-  const meusLivros = [];
-
-  const minhasPromessas = livros.map((livro) => { 
-    return axios.get(`http://localhost:5000/book/review_counts.json?key=KGXBPKnyuYSnSpYDYo7rA&isbns=${livro.isbn}`)
-      .then(resolve => ({
-        ...livro,
-        grRating: resolve.data.books[0].average_rating
-      }))
-      .catch(err => ({
-        ...livro,
-        grRating: 0
-      }));
+  dispatch({
+    type: GET_BOOKS,
+    books: livrosJSON
   });
+};
 
-  console.log(minhasPromessas);
-
-  Promise.all(minhasPromessas)
-    .then(res => dispatch({
-      type: GET_BOOKS,
-      books: res
-    }));
+export const getGrStats = (livro) => (dispatch) => {
+  axios.get(`http://localhost:5000/book/review_counts.json?key=KGXBPKnyuYSnSpYDYo7rA&isbns=${livro.isbn}`)
+    .then((res) => {
+      dispatch({
+        type: GET_GR_STATS,
+        grStats: {
+          numRatings: res.data.books[0].ratings_count,
+          averageRating: res.data.books[0].average_rating
+        },
+        livroID: livro.objectId
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: GET_GR_STATS,
+        grStats: 0,
+        livroID: livro.objectId
+      });
+    });
 };

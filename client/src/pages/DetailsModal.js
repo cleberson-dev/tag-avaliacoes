@@ -1,5 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import { connect } from 'react-redux';
+
+import { hideCurrentBook } from '../actions/currentBookActions';
 
 import Card from '../components/Card';
 import BookDetails from '../components/BookDetails';
@@ -26,9 +29,19 @@ const GoBack = styled.span`
 `;
 
 
+const animation = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
+
 
 const DetailContainer = styled.section`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -36,6 +49,7 @@ const DetailContainer = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: ${animation} 0.6s;
 
   background-color: rgba(53, 78, 83, .8);
 `;
@@ -62,28 +76,20 @@ const SubHeading = styled.h5`
 
 
 
-const DetailsModal = () => {
-  const tagInfo = {
-    edition: 'Fevereiro de 2017',
-    curator: 'Martha Medeiros',
-    pages: 336,
-    numRatings: 863
-  };
-
-
+const DetailsModal = ({ book, hideCurrentBook }) => {
   return (
     <DetailContainer>
       <GoBack>
         <img src={returnImg} alt="Voltar" style={{ height: "25px", marginRight: "5px" }} />
-        Voltar     
+        <span onClick={hideCurrentBook}>Voltar</span>     
       </GoBack>
 
       <Card width="90%">
         <Heading>Detalhes</Heading>
-        <BookDetails height="fit-content" />
+        <BookDetails height="fit-content" livro={book} />
 
         <SubHeading>Mais informações</SubHeading>
-        <ExtraInfo tagInfo={tagInfo} grRatings={302} />
+        <ExtraInfo bookInfo={book} />
       </Card>
     </DetailContainer>
   );
@@ -93,4 +99,4 @@ const DetailsModal = () => {
 
 
 
-export default DetailsModal;
+export default connect(state => ({}), { hideCurrentBook })(DetailsModal);

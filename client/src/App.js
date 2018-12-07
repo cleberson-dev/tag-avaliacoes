@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { connect } from 'react-redux';
+
+import { getBooks } from './actions/booksActions';
 
 import Header from './components/Header';
-import BookList from './pages/BookList';
+import Loading from './components/Loading';
+
+import BookList from './pages/BookList/BookList';
 import DetailsModal from './pages/DetailsModal';
 
 const AppStyle = createGlobalStyle`
@@ -26,7 +31,12 @@ const theme = {
 
 
 class App extends Component {
+  componentDidMount() {
+    this.props.getBooks();
+  }
+
   render() {
+    const { currentBook, books } = this.props; 
     return (
       <React.Fragment>
         <AppStyle />
@@ -34,8 +44,8 @@ class App extends Component {
         <ThemeProvider theme={theme}>
           <div className="App">
             <Header />
-            <BookList />
-            {/* <DetailsModal /> */}
+            { books.length > 0 ? <BookList livros={books} /> : <Loading /> }
+            { currentBook.hasOwnProperty('author') ? <DetailsModal book={currentBook} /> : '' }
           </div>
         </ThemeProvider>
       </React.Fragment>
@@ -45,6 +55,9 @@ class App extends Component {
 
 
 
+const mapStateToProps = (state) => ({ 
+  currentBook: state.currentBook, 
+  books: state.books 
+});
 
-
-export default App;
+export default connect(mapStateToProps, { getBooks } )(App);

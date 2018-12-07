@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 import Rating from "./Rating";
 
-import coverUrl from "../assets/img/bookcover.jpg";
 
 
 
@@ -60,7 +59,7 @@ const getTAGRating = (totalRatings, numRatings) => (totalRatings / numRatings).t
 
 
 const BookDetails = ({ livro, botao, height }) => {
-  const { cover, name, author, numRatings, totalRatings, grRating } = livro;
+  const { cover, name, author, numRatings, totalRatings, grStats } = livro;
   const tagRating = getTAGRating(totalRatings, numRatings);
 
   return (
@@ -73,7 +72,7 @@ const BookDetails = ({ livro, botao, height }) => {
         </TextContainer>
         <RatingsContainer>
           <Rating brand="tag" rating={tagRating} />
-          <Rating brand="goodreads" rating={grRating ? grRating : "-.--"} />
+          <Rating brand="goodreads" rating={grStats ? grStats.averageRating : "-.--"} />
         </RatingsContainer>
         { botao }
       </BookInfo>

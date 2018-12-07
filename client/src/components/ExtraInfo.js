@@ -38,8 +38,10 @@ const InfoItem = ({ atributo, valor }) => (
 );
 
 
-const ExtraInfo = ({ tagInfo, grRatings }) => {
-  const { edition, curator, pages, numRatings } = tagInfo;
+const ExtraInfo = ({ bookInfo }) => {
+  const { edition, curator, pages, numRatings, grStats } = bookInfo;
+  const avaliacoesGR = grStats === 0 ? 'Sem informações' : `${grStats.numRatings} avaliações`;
+
 
   return (
     <InfoLista>
@@ -47,7 +49,7 @@ const ExtraInfo = ({ tagInfo, grRatings }) => {
       <InfoItem atributo="Curador(a)" valor={curator} />
       <InfoItem atributo="Total de páginas" valor={`${pages} páginas`} />
       <InfoItem atributo="Total de avaliações TAG" valor={`${numRatings} avaliações`} />
-      <InfoItem atributo="Total de avaliações GoodReads" valor={`${grRatings} avaliações`} />
+      <InfoItem atributo="Total de avaliações GoodReads" valor={avaliacoesGR} />
     </InfoLista>
   );
 };

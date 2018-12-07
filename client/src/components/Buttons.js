@@ -1,7 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const FlatButton = styled.button`
+
+const RegularButton = ({ onClickHandler, label, className }) => (
+  <button className={className} onClick={onClickHandler}>
+    { label }
+  </button>
+);
+
+
+export const FlatButton = styled(RegularButton)`
   border: none;
   background-color: ${props => props.theme.primary};
   color: white;
@@ -19,4 +27,3 @@ export const FlatButton = styled.button`
     outline: 1px solid ${props => props.theme.primary};
   }
 `;
-
