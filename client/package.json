@@ -17,7 +17,7 @@
     "styled-components": "^4.1.2"
   },
   "scripts": {
-    "start": "env NODE_ICU_DATA=node_modules\\full-icu react-scripts start",
+    "start": "setx NODE_ICU_DATA \"node_modules\\full-icu\" && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
